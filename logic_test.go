@@ -15,13 +15,13 @@ func TestConvertNullable(t *testing.T) {
 
 	var myIntPtr *int
 
-	require.Equal(t, (*customIntegerType)(nil), ConvertNullable(myIntPtr, func(myInt int) customIntegerType { return customIntegerType{a: myInt} }))
+	require.Equal(t, (*customIntegerType)(nil), ConvertNullable(myIntPtr, func(myInt int) *customIntegerType { return &customIntegerType{a: myInt} }))
 
 	someInt := 5
 	myIntPtr = &someInt
 	require.Equal(t, &customIntegerType{
 		a: someInt,
-	}, ConvertNullable(myIntPtr, func(myInt int) customIntegerType { return customIntegerType{a: myInt} }))
+	}, ConvertNullable(myIntPtr, func(myInt int) *customIntegerType { return &customIntegerType{a: myInt} }))
 }
 
 func TestTernary(t *testing.T) {

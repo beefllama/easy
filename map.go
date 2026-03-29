@@ -1,5 +1,6 @@
 package easy
 
+// Keys returns a slice of keys of the map.
 func Keys[K comparable, V any](m map[K]V) []K {
 	keys := make([]K, 0, len(m))
 
@@ -10,6 +11,7 @@ func Keys[K comparable, V any](m map[K]V) []K {
 	return keys
 }
 
+// Values returns a slice of values of the map.
 func Values[K comparable, V any](m map[K]V) []V {
 	values := make([]V, 0, len(m))
 
@@ -20,6 +22,7 @@ func Values[K comparable, V any](m map[K]V) []V {
 	return values
 }
 
+// SliceToMap returns a map of converted slice elements.
 func SliceToMap[T any, K comparable, V any](s []T, toMapFunc func(e T) (K, V)) map[K]V {
 	m := make(map[K]V, len(s))
 
